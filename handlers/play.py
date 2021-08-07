@@ -59,7 +59,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
                 await f.close()
 
     image1 = Image.open("./background.png")
-    image2 = Image.open("etc/837707.png")
+    image2 = Image.open("etc/150403.png")
     image3 = changeImageSize(1280, 720, image1)
     image4 = changeImageSize(1280, 720, image2)
     image5 = image3.convert("RGBA")
@@ -125,7 +125,7 @@ async def play(_, message: Message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "@OdaHelper"
+        user.first_name = "Asuna Smart AI"
     usar = user
     wew = usar.id
     try:
@@ -134,7 +134,7 @@ async def play(_, message: Message):
         for administrator in administrators:
             if administrator == message.from_user.id:
                 await lel.edit(
-                        "<b>Remember to add helper to your channel</b>",
+                        "<b>Remember to add @AsunaSmartAI to your channel</b>",
                     )
                 try:
                     invitelink = await _.export_chat_invite_link(chid)
@@ -147,10 +147,10 @@ async def play(_, message: Message):
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "Oda joined this group for playing music in VC"
+                        message.chat.id, "Asuna joined this group for playing music in VC"
                     )
                     await lel.edit(
-                        "<b>Oda Assistent joined this chat</b>",
+                        "<b>Asuna Smart AI joined this chat</b>",
                     )
                     
                 except UserAlreadyParticipant:
@@ -177,7 +177,7 @@ async def play(_, message: Message):
 
         file_name = get_file_name(audio)
         title = file_name
-        thumb_name = "https://telegra.ph/file/ba7ba5a9c33b8d5f6a5a7.png"
+        thumb_name = "https://telegra.ph/file/0f1d8b3359156d649e1f2.jpg"
         thumbnail = thumb_name
         duration = round(audio.duration / 60)
         views = "Locally added"
@@ -187,10 +187,10 @@ async def play(_, message: Message):
                     [
                         InlineKeyboardButton(
                             text="Support 🚨",
-                            url=f"https://t.me/OdaSupport"),
+                            url=f"https://t.me/YBotsSupport"),
                         InlineKeyboardButton(
                             text="Updates 📡",
-                            url=f"https://t.me/UserLazyXBot")
+                            url=f"https://t.me/SpreadNetworks")
                     ],
                     [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
                 ]
@@ -228,17 +228,17 @@ async def play(_, message: Message):
                     [
                         InlineKeyboardButton(
                             text="Support 🚨",
-                            url=f"https://t.me/OdaSupport"),
+                            url=f"https://t.me/YBotsSupport"),
                         InlineKeyboardButton(
                             text="Updates 📡",
-                            url=f"https://t.me/UserLazyXBot")
+                            url=f"https://t.me/SpreadNetworks")
                     ],
                     [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
                 ]
             )
         except Exception as e:
             title = "NaN"
-            thumb_name = "https://telegra.ph/file/ba7ba5a9c33b8d5f6a5a7.png"
+            thumb_name = "https://telegra.ph/file/0f1d8b3359156d649e1f2.jpg"
             duration = "NaN"
             views = "NaN"
             keyboard = InlineKeyboardMarkup(
@@ -296,10 +296,10 @@ async def play(_, message: Message):
                     [
                         InlineKeyboardButton(
                             text="Support 🚨",
-                            url=f"https://t.me/OdaSupport"),
+                            url=f"https://t.me/YBotsSupport"),
                         InlineKeyboardButton(
                             text="Updates 📡",
-                            url=f"https://t.me/UserLazyXBot")
+                            url=f"https://t.me/SpreadNrtworks")
                     ]
                 ]
             )
