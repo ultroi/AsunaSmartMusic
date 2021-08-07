@@ -22,7 +22,7 @@ from youtube_dl.utils import (
 
 @Client.on_message(filters.command("song") & ~filters.edited)
 async def song(client, message):
-    cap = "@OdaRobot"
+    cap = "@YogaWaifuBot"
     url = message.text.split(None, 1)[1]
     rkp = await message.reply("Processing...")
     if not url:
@@ -93,7 +93,7 @@ async def song(client, message):
     time.time()
     if song:
         await rkp.edit("Uploading...") #levina-lab
-        lol = "./etc/thumb.jpg"
+        lol = "./etc/20210806_210945.jpg"
         lel = await message.reply_audio(
                  f"{rip_data['id']}.mp3",
                  duration=int(rip_data["duration"]),
