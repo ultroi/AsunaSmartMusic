@@ -81,35 +81,10 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
     img.save("final.png")
     os.remove("temp.png")
     os.remove("background.png")
-    
-# cb admin
-def cb_admin_check(func: Callable) -> Callable:
-    async def decorator(client, cb):
-        admemes = a.get(cb.message.chat.id)
-        if cb.from_user.id in admemes:
-            return await func(client, cb)
-        else:
-            await cb.answer("You ain't allowed!", show_alert=True)
-            return
-
-    return decorator
 
 
-# close button
-@Client.on_callback_query(filters.regex(pattern=r"^(cls)$"))
-@cb_admin_check
-async def m_cb(b, cb):
-    global que    
-    qeue = que.get(cb.message.chat.id)
-    type_ = cb.matches[0].group(1)
-    chat_id = cb.message.chat.id
-    m_chat = cb.message.chat
 
-    if type_ == "cls":          
-        await cb.answer("Closed menu")
-        await cb.message.delete()       
 
-# play
 @Client.on_message(command("play") 
                    & filters.group
                    & ~filters.edited 
@@ -133,26 +108,18 @@ async def play(_, message: Message):
     except:
         for administrator in administrators:
             if administrator == message.from_user.id:
-                await lel.edit(
-                        "<b>Remember to add @AsunaSmartAI to your channel</b>",
-                    )
                 try:
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>Add me as admin of yor group first</b>",
-                    )
+                        "<b>Add me as admin of yor group first!</b>")
                     return
 
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "Asuna joined this group for playing music in VC"
-                    )
-                    await lel.edit(
-                        "<b>Asuna Smart AI joined this chat</b>",
-                    )
-                    
+                        message.chat.id, "**Asuna Smart AI assistant joined this group for play music 🎵**")
+
                 except UserAlreadyParticipant:
                     pass
                 except Exception:
@@ -160,10 +127,9 @@ async def play(_, message: Message):
                         f"<b>🛑 Flood Wait Error 🛑</b> \n\Hey {user.first_name}, assistant userbot couldn't join your group due to heavy join requests. Make sure userbot is not banned in group and try again later!")
     try:
         await USER.get_chat(chid)
-        # lmoa = await client.get_chat_member(chid,wew)
     except:
         await lel.edit(
-            f"<i>Hey {user.first_name}, assistant userbot is not in this chat, ask admin to send /play command for first time to add it.</i>")
+            f"<i>Hey {user.first_name}, Asuna Smart AI is not in this chat, ask admin to send /play command for first time to add it.</i>")
         return
     
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
@@ -183,18 +149,15 @@ async def play(_, message: Message):
         views = "Locally added"
 
         keyboard = InlineKeyboardMarkup(
+            [
                 [
-                    [
-                        InlineKeyboardButton(
-                            text="Support 🚨",
-                            url=f"https://t.me/YBotsSupport"),
-                        InlineKeyboardButton(
-                            text="Updates 📡",
-                            url=f"https://t.me/SpreadNetworks")
-                    ],
-                    [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+                    InlineKeyboardButton(
+                        text="Channel 🔊",
+                        url="https://t.me/SpreadNetworks")
+                   
                 ]
-            )
+            ]
+        )
         
         requested_by = message.from_user.first_name
         await generate_cover(requested_by, title, views, duration, thumbnail)  
@@ -232,8 +195,8 @@ async def play(_, message: Message):
                         InlineKeyboardButton(
                             text="Updates 📡",
                             url=f"https://t.me/SpreadNetworks")
-                    ],
-                    [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+
+                    ]
                 ]
             )
         except Exception as e:
@@ -299,7 +262,7 @@ async def play(_, message: Message):
                             url=f"https://t.me/YBotsSupport"),
                         InlineKeyboardButton(
                             text="Updates 📡",
-                            url=f"https://t.me/SpreadNrtworks")
+                            url=f"https://t.me/SpreadNetworks")
                     ]
                 ]
             )
