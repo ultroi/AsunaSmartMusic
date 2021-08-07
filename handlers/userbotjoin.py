@@ -23,7 +23,7 @@ async def addchannel(client, message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "@OdaHelper"
+        user.first_name = "@AsunaSmartAI"
 
     try:
         await USER.join_chat(invitelink)
@@ -35,7 +35,7 @@ async def addchannel(client, message):
         print(e)
         await message.reply_text(
             f"<b>Flood Wait Error\n{user.first_name} can't join your group due to many join requests for userbot! Make sure the user is not banned in the group."
-            "\n\nOr manually add the Assistant bot to your Group and try again.</b>",
+            "\n\nOr manually add @AsunaSmartAI to your Group and try again.</b>",
         )
         return
     await message.reply_text(
@@ -62,7 +62,7 @@ async def bye(client, message):
 
     left=0
     failed=0
-    lol = await message.reply("**Asisten Meninggalkan semua obrolan**")
+    lol = await message.reply("**Assistant leaving all chats**")
     async for dialog in USER.iter_dialogs():
         try:
             await USER.leave_chat(dialog.chat.id)
@@ -98,7 +98,7 @@ async def addcchannel(client, message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "@OdaHelper"
+        user.first_name = "@AsunaSmartAI"
 
     try:
         await USER.join_chat(invitelink)
@@ -111,9 +111,9 @@ async def addcchannel(client, message):
         print(e)
         await message.reply_text(
             f"<b>Flood Wait Error\n{user.first_name} can't join your group due to many join requests for userbot! Make sure the user is not banned in the group."
-            "\n\nOr manually add the Assistant bot to your Group and try again.</b>",
+            "\n\nOr manually add @AsunaSmartAI to your Group and try again.</b>",
         )
         return
     await message.reply_text(
-        f"<b>{user.first_name} sudah bergabung dengan obrolan Anda</b>",
+        f"<b>{user.first_name} already joined.</b>",
     )
