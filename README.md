@@ -47,7 +47,7 @@
 - `/skip` - play next song
 - `/end` - stop music play
 - `/userbotjoin` - add assistant to group
-- `/userbotleaave` - let userbot leave your group
+- `/userbotleave` - let userbot leave your group
 - `/reload` - refresh adminlist
 
 ### Deploy To Heroku</h4>
