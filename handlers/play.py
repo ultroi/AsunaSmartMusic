@@ -204,7 +204,7 @@ async def play(_, message: Message):
                             url=f"{url}"),
                         InlineKeyboardButton(
                             text="Download 📥",
-                            url=f"{dlurl}")
+                            url=f"{durl}")
                     ]
                 ]
             )
@@ -279,7 +279,7 @@ async def play(_, message: Message):
                             url=f"{url}"),
                         InlineKeyboardButton(
                             text="Download 📥",
-                            url=f"{dlurl}")
+                            url=f"{durl}")
                     ]
                 ]
             )
