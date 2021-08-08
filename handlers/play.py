@@ -190,12 +190,19 @@ async def play(_, message: Message):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Support 🚨",
+                            text="🚨 Support",
                             url=f"https://t.me/YBotsSupport"),
                         InlineKeyboardButton(
                             text="Updates 📡",
-                            url=f"https://t.me/SpreadNetworks")
-
+                            url=f"https://t.me/SpreadNetworks"),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="🎬 YouTube",
+                            url=f"{url}"),
+                        InlineKeyboardButton(
+                            text="Download 📥",
+                            url=f"{dlurl}")
                     ]
                 ]
             )
@@ -262,7 +269,15 @@ async def play(_, message: Message):
                             url=f"https://t.me/YBotsSupport"),
                         InlineKeyboardButton(
                             text="Updates 📡",
-                            url=f"https://t.me/SpreadNetworks")
+                            url=f"https://t.me/SpreadNetworks"),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="🎬 YouTube",
+                            url=f"{url}"),
+                        InlineKeyboardButton(
+                            text="Download 📥",
+                            url=f"{dlurl}")
                     ]
                 ]
             )
