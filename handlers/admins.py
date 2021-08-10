@@ -11,7 +11,8 @@ from helpers.filters import command, other_filters
 from callsmusic import callsmusic
 
 
-@Client.on_message(command(["pause", "jeda"]) & other_filters)
+#@Client.on_message(command(["pause", "jeda"]) & other_filters)
+@Client.on_message(command("pause") & other_filters)
 @errors
 @authorized_users_only
 async def pause(_, message: Message):
@@ -19,7 +20,8 @@ async def pause(_, message: Message):
     await message.reply_text("⏸ Music Paused.")
 
 
-@Client.on_message(command(["resume", "lanjut"]) & other_filters)
+#@Client.on_message(command(["resume", "lanjut"]) & other_filters)
+@Client.on_message(command("resume") & other_filters)
 @errors
 @authorized_users_only
 async def resume(_, message: Message):
@@ -27,17 +29,22 @@ async def resume(_, message: Message):
     await message.reply_text("▶️ Music Resumed.")
 
 
-@Client.on_message(command(["end", "stop"]) & other_filters)
+#@Client.on_message(command(["end", "stop"]) & other_filters)
+@Client.on_message(command("end") & other_filters)
 @errors
 @authorized_users_only
 async def stop(_, message: Message):
-    try:
-       callsmusic.queues.clear(message.chat.id)
-    except QueueEmpty:
-       pass
+    chat_id = get_chat_id(message.chat)
+    if chat_id not in callsmusic.pytgcalls.active_calls:
+        await message.reply_text("❗ Nothing song play!")
+    else:
+        try:
+           callsmusic.queues.clear(message.chat.id)
+        except QueueEmpty:
+           pass
 
-    callsmusic.pytgcalls.leave_group_call(message.chat.id)
-    await message.reply_text("❌ **Stop the Song!**")
+        callsmusic.pytgcalls.leave_group_call(message.chat.id)
+        await message.reply_text("❌ **Stop the Song!**")
 
 
 @Client.on_message(command("skip") & other_filters)
@@ -80,4 +87,4 @@ async def admincache(client, message: Message):
         ),
     )
 
-    await message.reply_text("✅️ **Admin List** is **updated**")
+    await message.reply_text("✅️ Admin list is updated")
