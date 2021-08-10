@@ -16,8 +16,14 @@ from callsmusic import callsmusic
 @errors
 @authorized_users_only
 async def pause(_, message: Message):
-    callsmusic.pytgcalls.pause_stream(message.chat.id)
-    await message.reply_text("⏸ Music Paused.")
+    chat_id = get_chat_id(message.chat)
+    if (chat_id not in callsmusic.pytgcalls.active_calls) or (
+        callsmusic.pytgcalls.active_calls[chat_id] == "paused"
+    ):
+        await message.reply_text("❗ No music played!")
+    else:
+        callsmusic.pytgcalls.pause_stream(chat_id)
+        await message.reply_text("▶️ Paused!")
 
 
 #@Client.on_message(command(["resume", "lanjut"]) & other_filters)
@@ -25,8 +31,14 @@ async def pause(_, message: Message):
 @errors
 @authorized_users_only
 async def resume(_, message: Message):
-    callsmusic.pytgcalls.resume_stream(message.chat.id)
-    await message.reply_text("▶️ Music Resumed.")
+    chat_id = get_chat_id(message.chat)
+    if (chat_id not in callsmusic.pytgcalls.active_calls) or (
+        callsmusic.pytgcalls.active_calls[chat_id] == "playing"
+    ):
+        await message.reply_text("❗ Nothing paused!")
+    else:
+        callsmusic.pytgcalls.resume_stream(chat_id)
+        await message.reply_text("⏸ Resumed!")
 
 
 #@Client.on_message(command(["end", "stop"]) & other_filters)
@@ -36,7 +48,7 @@ async def resume(_, message: Message):
 async def stop(_, message: Message):
     chat_id = get_chat_id(message.chat)
     if chat_id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("❗ Nothing song play!")
+        await message.reply_text("❗ Nothing song played!")
     else:
         try:
            callsmusic.queues.clear(message.chat.id)
@@ -44,7 +56,7 @@ async def stop(_, message: Message):
            pass
 
         callsmusic.pytgcalls.leave_group_call(message.chat.id)
-        await message.reply_text("❌ **Stop the Song!**")
+        await message.reply_text("❌ Stop the Song!")
 
 
 @Client.on_message(command("skip") & other_filters)
@@ -70,7 +82,7 @@ async def skip(_, message: Message):
         skip = qeue.pop(0)
     if not qeue:
         return
-    await message.reply_text(f"- Skipped **{skip[0]}**\n- Now Playing **{qeue[0][0]}**")
+    await message.reply_text(f"Skipped **{skip[0]}**\nNow Playing **{qeue[0][0]}**")
 
 
 @Client.on_message(filters.command("reload"))
