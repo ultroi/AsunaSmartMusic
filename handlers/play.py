@@ -296,9 +296,9 @@ async def play(_, message: Message):
         await message.reply_photo(
         photo="final.png", 
         caption="**🎵 Song:** {}\n**🕒 Duration:** {} min\n**👤 Added By:** {}\n\n**#⃣ Queued Position:** {}".format(
-        title, duration, message.from_user.mention(), position,
+        title, duration, message.from_user.mention(), position
         ),
-        reply_markup=keyboard, del_in=10)
+        reply_markup=keyboard)
         os.remove("final.png")
         return await lel.delete()
     else:
@@ -308,7 +308,6 @@ async def play(_, message: Message):
         reply_markup=keyboard,
         caption="**🎵 Song:** {}\n**🕒 Duration:** {} min\n**👤 Added By:** {}\n\n**▶️ Now Playing at `{}`...**".format(
         title, duration, message.from_user.mention(), message.chat.title
-        ),
-        del_in=10)
+        ), )
         os.remove("final.png")
         return await lel.delete()
