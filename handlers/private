@@ -12,7 +12,7 @@ async def start(_, message: Message):
     await message.reply_text(
         f"""**👋🏻 Hello, My name is {bn} ✨
 
-Powered by [UserLazy](https://UserLazyXBot).
+Powered by [Yoga Pranata](https://t.me/zYxDx).
 
 want play music on vcg?, add me to your group.**
         """,
@@ -23,14 +23,14 @@ want play music on vcg?, add me to your group.**
                         "➕ ADD TO YOUR GROUP ➕", url="https://t.me/{BOT_USERNAME}?startgroup=true")
                   ],[
                     InlineKeyboardButton(
-                        "🌻 GROUP SUPPORT 🌻", url="https://t.me/OdaSupport"
+                        "🌻 GROUP SUPPORT 🌻", url="https://t.me/YBotsSupport"
                     ),
                     InlineKeyboardButton(
-                        "🌸 UPDATES CHANNEL 🌸", url="https://t.me/UserLazyXBot"
+                        "🌸 UPDATES CHANNEL 🌸", url="https://t.me/SpreadNetworks"
                     )
                 ],[ 
                     InlineKeyboardButton(
-                        "🎁 DONATION", url="https://t.me/RxyMX"
+                        "🎁 DONATION", url="https://paypal.me/YogaPranataDMK"
                     )]
             ]
         ),
@@ -44,7 +44,7 @@ async def gstart(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "🌸 CHANNEL 🌸", url="https://t.me/UserLazyXBot")
+                        "🌸 CHANNEL 🌸", url="https://t.me/SpreadNetworks")
                 ]
             ]
         )
