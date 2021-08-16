@@ -59,7 +59,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
                 await f.close()
 
     image1 = Image.open("./background.png")
-    image2 = Image.open("etc/150403.jpg")
+    image2 = Image.open("etc/150403.png")
     image3 = changeImageSize(1280, 720, image1)
     image4 = changeImageSize(1280, 720, image2)
     image5 = image3.convert("RGBA")
@@ -143,7 +143,7 @@ async def play(_, message: Message):
 
         file_name = get_file_name(audio)
         title = file_name
-        thumb_name = "https://telegra.ph/file/0f1d8b3359156d649e1f2.jpg"
+        thumb_name = "https://telegra.ph/file/c4b7a21a33e9364f87eee.png"
         thumbnail = thumb_name
         duration = round(audio.duration / 60)
         views = "Locally added"
@@ -210,7 +210,7 @@ async def play(_, message: Message):
             )
         except Exception as e:
             title = "NaN"
-            thumb_name = "https://telegra.ph/file/0f1d8b3359156d649e1f2.jpg"
+            thumb_name = "https://telegra.ph/file/c4b7a21a33e9364f87eee.png"
             duration = "NaN"
             views = "NaN"
             keyboard = InlineKeyboardMarkup(
