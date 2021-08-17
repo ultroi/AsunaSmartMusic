@@ -1,5 +1,5 @@
 from asyncio.queues import QueueEmpty
-from config import que
+from config import que, BOT_USERNAME
 from pyrogram import Client, filters
 from pyrogram.types import Message
 import sira
@@ -10,7 +10,6 @@ from helpers.channelmusic import get_chat_id
 from helpers.filters import command, other_filters
 from callsmusic import callsmusic
 from callsmusic.queues import queues
-from config import BOT_USERNAME
 
 
 @Client.on_message(command(["pause", f"pause@{BOT_USERNAME}"]) & other_filters)
