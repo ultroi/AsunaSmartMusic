@@ -30,6 +30,9 @@ async def addchannel(client, message):
         await message.reply_text(
             f"<b>{user.first_name} Allready join this Group</b>",
         )
+#
+        return
+#
     except Exception as e:
         print(e)
         await message.reply_text(
@@ -47,6 +50,7 @@ async def addchannel(client, message):
 async def rem(USER, message):
     try:
         await USER.leave_chat(message.chat.id)
+        await message.reply_text("@AsunaSmartAI succesfully leave this chat.")
     except:
         await message.reply_text(
             f"<b>Users cannot leave your group! Probably waiting for floodwaits."
