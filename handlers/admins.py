@@ -12,7 +12,6 @@ from callsmusic import callsmusic
 from callsmusic.queues import queues
 
 
-#@Client.on_message(command(["pause", "jeda"]) & other_filters)
 @Client.on_message(command("pause") & other_filters)
 @errors
 @authorized_users_only
@@ -27,7 +26,6 @@ async def pause(_, message: Message):
         await message.reply_text("▶️ Paused!")
 
 
-#@Client.on_message(command(["resume", "lanjut"]) & other_filters)
 @Client.on_message(command("resume") & other_filters)
 @errors
 @authorized_users_only
@@ -42,7 +40,6 @@ async def resume(_, message: Message):
         await message.reply_text("⏸ Resumed!")
 
 
-#@Client.on_message(command(["end", "stop"]) & other_filters)
 @Client.on_message(command("end") & other_filters)
 @errors
 @authorized_users_only
