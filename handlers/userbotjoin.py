@@ -1,4 +1,4 @@
-# Credit DaisyXMusic, Changes By UserLazy, Improve Code By UserLazy
+# Credit DaisyXMusic, Changes By UserLazy, Improve Code By zYxDevs
 
 from pyrogram import Client, filters
 from pyrogram.errors import UserAlreadyParticipant
@@ -53,12 +53,11 @@ async def rem(USER, message):
             "\n\nOr manually remove me from your Group</b>",
         )
         return
+
     
-@Client.on_message(filters.command(["userbotleaveall", f"userbotleavealln@{BOT_USERNAME}"]))
+@Client.on_message(filters.command(["userbotleaveall", f"userbotleaveall@{BOT_USERNAME}"]))
 async def bye(client, message):
     if message.from_user.id not in SUDO_USERS:
-        return
-
     left=0
     failed=0
     lol = await message.reply("**Assistant leaving all chats**")
