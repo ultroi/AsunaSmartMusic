@@ -9,6 +9,7 @@ from helpers.decorators import authorized_users_only, errors
 from helpers.channelmusic import get_chat_id
 from helpers.filters import command, other_filters
 from callsmusic import callsmusic
+from callsmusic.queues import queues
 
 
 #@Client.on_message(command(["pause", "jeda"]) & other_filters)
@@ -59,7 +60,7 @@ async def stop(_, message: Message):
         await message.reply_text("❌ Stop the Song!")
 
 
-@Client.on_message(command("skip") & other_filters)
+@Client.on_message(command(["skip"]) & other_filters)
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
@@ -68,13 +69,13 @@ async def skip(_, message: Message):
     if chat_id not in callsmusic.pytgcalls.active_calls:
         await message.reply_text("❗ Nothing is playing to skip!")
     else:
-        callsmusic.queues.task_done(chat_id)
+        queues.task_done(chat_id)
 
-        if callsmusic.queues.is_empty(chat_id):
+        if queues.is_empty(chat_id):
             callsmusic.pytgcalls.leave_group_call(chat_id)
         else:
             callsmusic.pytgcalls.change_stream(
-                chat_id, callsmusic.queues.get(chat_id)["file"]
+                chat_id, queues.get(chat_id)["file"]
             )
 
     qeue = que.get(chat_id)
