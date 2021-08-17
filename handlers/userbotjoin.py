@@ -58,6 +58,8 @@ async def rem(USER, message):
 @Client.on_message(filters.command(["userbotleaveall", f"userbotleaveall@{BOT_USERNAME}"]))
 async def bye(client, message):
     if message.from_user.id not in SUDO_USERS:
+        return
+
     left=0
     failed=0
     lol = await message.reply("**Assistant leaving all chats**")
