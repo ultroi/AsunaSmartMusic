@@ -12,7 +12,7 @@ import youtube_dl
 from youtube_search import YoutubeSearch
 import converter
 from downloaders import youtube
-from config import DURATION_LIMIT
+from config import DURATION_LIMIT, BOT_USERNAME
 from helpers.filters import command
 from helpers.decorators import errors
 from helpers.errors import DurationLimitError
@@ -85,7 +85,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
 
 
 
-@Client.on_message(command("play") 
+@Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) 
                    & filters.group
                    & ~filters.edited 
                    & ~filters.forwarded
