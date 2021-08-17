@@ -5,9 +5,9 @@ from pyrogram.errors import UserAlreadyParticipant
 import asyncio
 from helpers.decorators import authorized_users_only, errors
 from callsmusic.callsmusic import client as USER
-from config import SUDO_USERS
+from config import SUDO_USERS, BOT_USERNAME
 
-@Client.on_message(filters.command(["userbotjoin"]) & ~filters.private & ~filters.bot)
+@Client.on_message(filters.command(["userbotjoin", f"userbotjoin@{BOT_USERNAME}"]) & ~filters.private & ~filters.bot)
 @authorized_users_only
 @errors
 async def addchannel(client, message):
@@ -19,12 +19,10 @@ async def addchannel(client, message):
             "<b>Add me admin first</b>",
         )
         return
-
     try:
         user = await USER.get_me()
     except:
         user.first_name = "@AsunaSmartAI"
-
     try:
         await USER.join_chat(invitelink)
         await USER.send_message(message.chat.id, "🤖: I'm joined here for playing music on voice chat")
@@ -36,7 +34,7 @@ async def addchannel(client, message):
         print(e)
         await message.reply_text(
             f"<b>Flood Wait Error\n{user.first_name} can't join your group due to many join requests for userbot! Make sure the user is not banned in the group."
-            "\n\nOr manually add @AsunaSmartAI to your Group and try again.</b>",
+            f"\n\nOr manually add @AsunaSmartAI to your Group and try again.</b>",
         )
         return
     await message.reply_text(
@@ -44,7 +42,7 @@ async def addchannel(client, message):
     )
 
 
-@USER.on_message(filters.group & filters.command(["userbotleave"]))
+@USER.on_message(filters.group & filters.command(["userbotleave", f"userbotleave@{BOT_USERNAME}"]))
 @authorized_users_only
 async def rem(USER, message):
     try:
@@ -56,7 +54,7 @@ async def rem(USER, message):
         )
         return
     
-@Client.on_message(filters.command(["userbotleaveall"]))
+@Client.on_message(filters.command(["userbotleaveall", f"userbotleavealln@{BOT_USERNAME}"]))
 async def bye(client, message):
     if message.from_user.id not in SUDO_USERS:
         return
@@ -74,47 +72,3 @@ async def bye(client, message):
             await lol.edit(f"Assistant leaving... Left: {left} chats. Failed: {failed} chats.")
         await asyncio.sleep(0.7)
     await client.send_message(message.chat.id, f"Left {left} chats. Failed {failed} chats.")
-    
-    
-@Client.on_message(filters.command(["userbotjoinchannel","ubjoinc"]) & ~filters.private & ~filters.bot)
-@authorized_users_only
-@errors
-async def addcchannel(client, message):
-    try:
-      conchat = await client.get_chat(message.chat.id)
-      conid = conchat.linked_chat.id
-      chid = conid
-    except:
-      await message.reply("Are your connected?")
-      return    
-    chat_id = chid
-    try:
-        invitelink = await client.export_chat_invite_link(chid)
-    except:
-        await message.reply_text(
-            "<b>Add me Admin first</b>",
-        )
-        return
-
-    try:
-        user = await USER.get_me()
-    except:
-        user.first_name = "@AsunaSmartAI"
-
-    try:
-        await USER.join_chat(invitelink)
-    except UserAlreadyParticipant:
-        await message.reply_text(
-            f"<b>{user.first_name} Already in your channel</b>",
-        )
-        return
-    except Exception as e:
-        print(e)
-        await message.reply_text(
-            f"<b>Flood Wait Error\n{user.first_name} can't join your group due to many join requests for userbot! Make sure the user is not banned in the group."
-            "\n\nOr manually add @AsunaSmartAI to your Group and try again.</b>",
-        )
-        return
-    await message.reply_text(
-        f"<b>{user.first_name} already joined.</b>",
-    )
