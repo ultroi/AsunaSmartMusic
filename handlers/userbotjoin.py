@@ -49,8 +49,8 @@ async def addchannel(client, message):
 @authorized_users_only
 async def rem(USER, message):
     try:
+        await USER.send_message(message.chat.id, "🤖: I'm leaving now, goodbye everyone😭. Join @SpreadNetworks for support.")
         await USER.leave_chat(message.chat.id)
-        await message.reply_text("@AsunaSmartAI succesfully leave this chat.")
     except:
         await message.reply_text(
             f"<b>Users cannot leave your group! Probably waiting for floodwaits."
