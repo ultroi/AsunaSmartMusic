@@ -1,5 +1,3 @@
-# Veez Music Bot (https://t.me/veezmusicbot)
-
 import os
 import aiohttp
 import asyncio
@@ -92,7 +90,7 @@ async def song(client, message):
         return
     time.time()
     if song:
-        await rkp.edit("Uploading...") #levina-lab
+        await rkp.edit("Uploading...")
         lol = "./etc/20210806_210945.jpg"
         lel = await message.reply_audio(
                  f"{rip_data['id']}.mp3",
