@@ -93,7 +93,7 @@ async def song(client, message):
     time.time()
     if song:
         await rkp.edit("Uploading...") #levina-lab
-        lol = "./etc/20210808_220829.jpg"
+        lol = "./etc/20210806_210945.jpg"
         lel = await message.reply_audio(
                  f"{rip_data['id']}.mp3",
                  duration=int(rip_data["duration"]),
