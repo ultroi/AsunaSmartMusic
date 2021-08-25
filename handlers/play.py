@@ -14,7 +14,7 @@ import converter
 from downloaders import youtube
 from config import DURATION_LIMIT, BOT_USERNAME
 from helpers.filters import command
-from helpers.decorators import errors
+from helpers.decorators import errors, authorized_users_only
 from helpers.errors import DurationLimitError
 from helpers.gets import get_url, get_file_name
 import aiofiles
@@ -84,7 +84,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
     os.remove("temp.png")
     os.remove("background.png")
 
-
+#test
 @Client.on_message(
     command("musicplayer") & ~filters.edited & ~filters.bot & ~filters.private
 )
@@ -126,14 +126,15 @@ async def hfmm(_, message):
         await message.reply_text(
             "I only recognize `/musicplayer on` and /musicplayer `off only`"
         )
-
+#endtest
 @Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) 
                    & filters.group
                    & ~filters.edited 
                    & ~filters.forwarded
                    & ~filters.via_bot)
 async def play(_, message: Message):
-    if message.chat.id in DISABLED_GROUPS:
+    if message.chat.id in DISABLED_GROUPS: #test
+        await message.reply("`Musicplayer are disabled, tell admin for turn on Musicplayer!`")
         return
     lel = await message.reply("🔄 **Processing...**")
     
