@@ -86,7 +86,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
 
 #test
 @Client.on_message(
-    command("musicplayer") & ~filters.edited & ~filters.bot & ~filters.private
+    command(["musicplayer", f"musicplayer@{BOT_USERNAME}"]) & ~filters.edited & ~filters.bot & ~filters.private & ~filters.group
 )
 @authorized_users_only
 async def hfmm(_, message):
