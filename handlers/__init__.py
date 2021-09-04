@@ -1,4 +1,3 @@
-
 import heroku3
 
 from functools import wraps
