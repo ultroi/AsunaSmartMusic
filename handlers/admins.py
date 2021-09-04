@@ -61,9 +61,9 @@ async def stop(_, message: Message):
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
-    global que
+#    global que
     if message.chat.id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("❗ Nothing is playing to skip!")
+        await message.reply_text("❗ Nothing song played to skip!")
     else:
         callsmusic.queues.task_done(message.chat.id)
 
@@ -74,14 +74,15 @@ async def skip(_, message: Message):
                 message.chat.id,
                 callsmusic.queues.get(message.chat.id)["file"]
             )
-
+            await message.reply_text("❗ Skipped song.")
+"""
     qeue = que.get(message.chat.id)
     if qeue:
         skip = qeue.pop(0)
     if not qeue:
         return
     await message.reply_text(f"Skipped **{skip[0]}**\nNow Playing **{qeue[0][0]}**")
-
+"""
 
 @Client.on_message(filters.command(["reload", f"reload@{BOT_USERNAME}"]))
 @errors
