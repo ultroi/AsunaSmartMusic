@@ -40,10 +40,10 @@ def task_done(chat_id: int) -> None:
 
 
 def clear(chat_id: int):
-    if chat_id in queues:
-        if queues[chat_id].empty():
-            raise Empty
-        else:
-            queues[chat_id].queue = []
-    else:
+    if chat_id not in queues:
         raise Empty
+
+    if queues[chat_id].empty():
+        raise Empty
+    else:
+        queues[chat_id].queue = []
