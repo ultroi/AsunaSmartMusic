@@ -4,6 +4,7 @@ import asyncio
 import json
 import sys
 import time
+from config import BOT_USERNAME
 from youtubesearchpython import SearchVideos
 from pyrogram import filters, Client
 from youtube_dl import YoutubeDL
@@ -18,9 +19,8 @@ from youtube_dl.utils import (
     XAttrMetadataError,
 )
 
-@Client.on_message(filters.command("song") & ~filters.edited)
+@Client.on_message(filters.command(["song", f"song@{BOT_USERNAME}"]) & ~filters.edited)
 async def song(client, message):
-    cap = "By @YogaWaifuBot"
     url = message.text.split(None, 1)[1]
     rkp = await message.reply("Processing...")
     if not url:
@@ -91,12 +91,16 @@ async def song(client, message):
     time.time()
     if song:
         await rkp.edit("Uploading...")
+        cap = f"Title: {rip_data["title"]}\nDuration: {rip_data["duration"]}\nArtist: {rip_data["uploader"]}\nDownloaded by @{BOT_USERNAME}"
         lol = "./etc/20210806_210945.jpg"
+        lmao = f"{rip_data['id']}.mp3"
         lel = await message.reply_audio(
-                 f"{rip_data['id']}.mp3",
+                 lmao,
+#                 f"{rip_data['id']}.mp3",
                  duration=int(rip_data["duration"]),
                  title=str(rip_data["title"]),
                  performer=str(rip_data["uploader"]),
                  thumb=lol,
                  caption=cap)
+        await os.delete(lmao)
         await rkp.delete()
