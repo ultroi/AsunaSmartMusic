@@ -31,7 +31,7 @@
 - [PyTgCalls](https://github.com/pytgcalls/pytgcalls)
 
 ### Commands 🛠
-#### For all in group
+#### Groups member
 - `/play` yt url - or reply to youtube url
 - `/play` - reply song file to play song
 - `/play <song name>` - play song you requested
@@ -50,11 +50,15 @@
 - `/userbotleave` - let userbot leave your group
 - `/reload` - refresh adminlist
 
+#### Owner & Sudo only
+- `/rebootmusic` - restart asuna music
+- `/gcast` - global cast to all users
+
 ### Deploy To Heroku</h4>
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zYxDevs/AsunaSmartMusic)
 
-Use [Repl Link](http://string.projectdils.repl.run) to get pyrogram string session
+Use [Repl Link](https://replit.com/@YogaPranata1/PyroStringGen) to get pyrogram string session
 
 ### Credits
 - [UserLazy](https://github.com/UserLazy): Dev
