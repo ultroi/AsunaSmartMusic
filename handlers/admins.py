@@ -12,7 +12,7 @@ from callsmusic import callsmusic
 from callsmusic.queues import queues
 
 
-@Client.on_message(command(["pause", f"pause@{BOT_USERNAME}", "pausea"]) & other_filters)
+@Client.on_message(command(["pause", f"pause@{BOT_USERNAME}"]) & other_filters)
 @errors
 @authorized_users_only
 async def pause(_, message: Message):
@@ -26,7 +26,7 @@ async def pause(_, message: Message):
         await message.reply_text("▶️ Paused!")
 
 
-@Client.on_message(command(["resume", f"resume@{BOT_USERNAME}", "resumea"]) & other_filters)
+@Client.on_message(command(["resume", f"resume@{BOT_USERNAME}"]) & other_filters)
 @errors
 @authorized_users_only
 async def resume(_, message: Message):
@@ -40,7 +40,7 @@ async def resume(_, message: Message):
         await message.reply_text("⏸ Resumed!")
 
 
-@Client.on_message(command(["end", f"end@{BOT_USERNAME}", "enda"]) & other_filters)
+@Client.on_message(command(["end", f"end@{BOT_USERNAME}"]) & other_filters)
 @errors
 @authorized_users_only
 async def stop(_, message: Message):
@@ -57,7 +57,7 @@ async def stop(_, message: Message):
         await message.reply_text("❌ Stop the Song!")
 
 
-@Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "skipa"]) & other_filters)
+@Client.on_message(command(["skip", f"skip@{BOT_USERNAME}"]) & other_filters)
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
