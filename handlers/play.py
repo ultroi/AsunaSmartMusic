@@ -86,7 +86,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
 
 #test
 @Client.on_message(
-    command(["musicplayer", f"musicplayer@{BOT_USERNAME}"]) & ~filters.edited & ~filters.bot & ~filters.private
+    command(["musicplayer", f"musicplayer@{BOT_USERNAME}", "amp"]) & ~filters.edited & ~filters.bot & ~filters.private
 )
 @authorized_users_only
 async def hfmm(_, message):
@@ -127,7 +127,7 @@ async def hfmm(_, message):
             "I only recognize `/musicplayer on` and /musicplayer `off only`"
         )
 #endtest
-@Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) 
+@Client.on_message(command(["play", f"play@{BOT_USERNAME}", "aplay"]) 
                    & filters.group
                    & ~filters.edited 
                    & ~filters.forwarded
