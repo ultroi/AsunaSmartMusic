@@ -69,7 +69,7 @@ async def skip(_, message: Message):
 
         if callsmusic.queues.is_empty(message.chat.id):
             callsmusic.pytgcalls.leave_group_call(message.chat.id)
-             await message.reply_text("❗ Nothing Queued, Stopped streaming.")
+            await message.reply_text("❗ Nothing Queued, Stopped streaming.")
         else:
             callsmusic.pytgcalls.change_stream(
                 message.chat.id,
