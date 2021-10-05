@@ -77,10 +77,10 @@ async def skip(_, message: Message):
 
     qeue = que.get(chat_id)
     if qeue:
-        skip = qeue.pop(0)
+        qeue.pop(0)
     if not qeue:
         return
-    await message.reply_text(f"- Skipped **{skip[0]}**\n- Now Playing **{qeue[0][0]}**")
+    await message.reply_text("⏭ **You've skipped to the next song.**")
 
 
 @Client.on_message(filters.command(["reload", f"reload@{BOT_USERNAME}"]))
