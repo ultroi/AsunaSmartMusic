@@ -74,14 +74,15 @@ async def skip(_, message: Message):
             callsmusic.pytgcalls.change_stream(
                 chat_id, callsmusic.queues.get(chat_id)["file"]
             )
-
+            await message.reply_text("❗ Skipped, playing next song.")
+"""
     qeue = que.get(chat_id)
     if qeue:
         qeue.pop(0)
     if not qeue:
         return
     await message.reply_text("⏭ **You've skipped to the next song.**")
-
+"""
 
 @Client.on_message(filters.command(["reload", f"reload@{BOT_USERNAME}"]))
 @errors
