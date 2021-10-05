@@ -49,9 +49,9 @@ async def stop(_, message: Message):
         await message.reply_text("❗ Nothing song played!")
     else:
         try:
-           callsmusic.queues.clear(message.chat.id)
+            callsmusic.queues.clear(message.chat.id)
         except QueueEmpty:
-           pass
+            pass
 
         callsmusic.pytgcalls.leave_group_call(message.chat.id)
         await message.reply_text("❌ Stop the Song!")
