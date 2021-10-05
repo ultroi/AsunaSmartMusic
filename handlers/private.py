@@ -50,7 +50,7 @@ async def gstart(_, message: Message):
                     InlineKeyboardButton("Developer", url="https.t.me/Yoga_CIC")
                 ]
             ]
-        )
+      )
    )
 
 @Client.on_message(filters.command(["help", f"help@{BOT_USERNAME}"]) & ~filters.group & ~filters.private)
@@ -67,7 +67,7 @@ async def helptext(_, message: Message):
                     InlineKeyboardButton("Developer", url="https.t.me/Yoga_CIC")
                 ]
             ]
-        )
+      )
    )
 
 @Client.on_message(filters.command(["about", f"about@{BOT_USERNAME}"]) & ~filters.private & ~filters.channel)
@@ -84,6 +84,6 @@ async def about(_, message: Message):
                     InlineKeyboardButton("Developer", url="https.t.me/Yoga_CIC")
                 ]
             ]
-        )
-    disable_web_page_preview=True
+      )
+      disable_web_page_preview=True
    )
