@@ -49,9 +49,9 @@ async def stop(_, message: Message):
         await message.reply_text("❗ Nothing song played!")
     else:
         try:
-           callsmusic.queues.clear(message.chat.id)
+            callsmusic.queues.clear(message.chat.id)
         except QueueEmpty:
-           pass
+            pass
 
         callsmusic.pytgcalls.leave_group_call(message.chat.id)
         await message.reply_text("❌ Stop the Song!")
@@ -61,31 +61,29 @@ async def stop(_, message: Message):
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
-#    global que
-    if message.chat.id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("❗ Nothing song played to skip!")
+    global que
+    chat_id = get_chat_id(message.chat)
+    if chat_id not in callsmusic.pytgcalls.active_calls:
+        await message.reply_text("❗ Nothing is playing to skip!")
     else:
-        callsmusic.queues.task_done(message.chat.id)
+        callsmusic.queues.task_done(chat_id)
 
-        if callsmusic.queues.is_empty(message.chat.id):
-            callsmusic.pytgcalls.leave_group_call(message.chat.id)
-            await message.reply_text("❗ Nothing Queued, Stopped streaming.")
+        if callsmusic.queues.is_empty(chat_id):
+            callsmusic.pytgcalls.leave_group_call(chat_id)
         else:
             callsmusic.pytgcalls.change_stream(
-                message.chat.id,
-                callsmusic.queues.get(message.chat.id)["file"]
+                chat_id, callsmusic.queues.get(chat_id)["file"]
             )
-            await message.reply_text("❗ Skipped song.")
-"""
-    qeue = que.get(message.chat.id)
+
+    qeue = que.get(chat_id)
     if qeue:
-        skip = qeue.pop(0)
+        qeue.pop(0)
     if not qeue:
         return
-    await message.reply_text(f"Skipped **{skip[0]}**\nNow Playing **{qeue[0][0]}**")
-"""
+    await message.reply_text("⏭ **You've skipped to the next song.**")
 
-@Client.on_message(filters.command(["reload", f"reload@{BOT_USERNAME}"]))
+
+@Client.on_message(filters.command(["reload", f"reload@{BOT_USERNAME}", "areload"]))
 @errors
 @authorized_users_only
 async def admincache(client, message: Message):
