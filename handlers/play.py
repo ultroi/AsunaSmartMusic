@@ -12,7 +12,7 @@ import youtube_dl
 from youtube_search import YoutubeSearch
 import converter
 from downloaders import youtube
-from config import DURATION_LIMIT, BOT_USERNAME
+from config import DURATION_LIMIT, BOT_USERNAME, ASSISTANT_USERNAME
 from helpers.filters import command
 from helpers.decorators import errors, authorized_users_only
 from helpers.errors import DurationLimitError
@@ -144,7 +144,7 @@ async def play(_, message: Message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "@AsunaSmartAI"
+        user.first_name = f"@{ASSISTANT_USERNAME}"
     usar = user
     wew = usar.id
     try:
