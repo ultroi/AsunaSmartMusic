@@ -62,7 +62,7 @@ Use [Repl Link](https://replit.com/@YogaPranata1/PyroStringGen) to get pyrogram 
 
 ### Credits
 - [UserLazy](https://github.com/UserLazy): Dev
-- [zYxDevs](https://github.com/zYxDevs): Editor
+- [zYxDevs](https://github.com/zYxDevs): Dev
 - [Laky](https://github.com/Laky-64) & [Andrew](https://github.com/AndrewLaneX): PyTgCalls
 - [Original Repo](https://github.com/suprojects/CallsMusic)
 - [Oda Nobunaga](https://t.me/OdaRobot): Bot
