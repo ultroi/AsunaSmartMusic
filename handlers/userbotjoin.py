@@ -5,7 +5,7 @@ from pyrogram.errors import UserAlreadyParticipant
 import asyncio
 from helpers.decorators import authorized_users_only, errors
 from callsmusic.callsmusic import client as USER
-from config import SUDO_USERS, BOT_USERNAME
+from config import SUDO_USERS, BOT_USERNAME, ASSISTANT_USERNAME
 
 @Client.on_message(filters.command(["userbotjoin", f"userbotjoin@{BOT_USERNAME}"]) & ~filters.private & ~filters.bot)
 @authorized_users_only
@@ -23,7 +23,7 @@ async def addchannel(client, message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "Asuna Music"
+        user.first_name = f"{ASSISTANT_USERNAME}"
 
     try:
         await USER.join_chat(invitelink)
@@ -38,7 +38,7 @@ async def addchannel(client, message):
         print(e)
         await message.reply_text(
             f"<b>🛑 Flood Wait Error 🛑 \n\n User {user.first_name} couldn't join your group due to heavy join requests for {user.first_name}."
-            "\n\nor manually add @AsunaSmartAI to your Group and try again</b>",
+            f"\n\nor manually add @{BOT_USERNAME} to your Group and try again</b>",
         )
         return
     await message.reply_text(
