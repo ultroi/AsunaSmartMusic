@@ -57,6 +57,10 @@
       "description": "Your bot command prefix",
       "required": false,
       "value": "/ ! ."
+    },
+    "ASSISTANT_USERNAME": {
+      "description": "USERNAME ASSISTANT",
+      "required": true
     }
   }
 }
