@@ -1,27 +1,20 @@
 <h2 align="centre">Asuna Music Player 🎵</h2>
 
 ### A bot that can play music on telegram group's voice call
-##
 <p align="center">
-  <img src="https://telegra.ph/file/d262cc6a47d7a709acecc.jpg">
-<b>Play from Title</b>
+  <img src="https://telegra.ph/file/ad370fb4d879fd29a9489.jpg">
 </p>
 
 ##
+<h3>Features ✔</h3>
 
-<p align="center">
-  <img src="https://telegra.ph/file/63b1e16cabccff6b70b30.jpg">
-<b>Play from YT Url</b>
-</p>
+- [X] Play from url
+- [X] Play from .mp3 file
+- [X] Play from title query
+- [X] Download song
+- [X] Global cast (Sudo & Owner)
+- [X] Easy Reboot [Heroku] (Owner)
 
-##
-
-<p align="center">
-  <img src="https://telegra.ph/file/69d584442148204d83223.jpg">
-<b>Play from Media File</b>
-</p>
-
-##
 
 <h3>Requirements 📝</h3>
 
@@ -30,8 +23,9 @@
 - Python 3.7+
 - [PyTgCalls](https://github.com/pytgcalls/pytgcalls)
 
-### Commands 🛠
-#### Groups member
+
+## Commands 🛠</h3>
+### Groups member
 - `/play` yt url - or reply to youtube url
 - `/play` - reply song file to play song
 - `/play <song name>` - play song you requested
