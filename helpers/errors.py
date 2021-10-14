@@ -2,7 +2,6 @@ import sys
 import traceback
 from functools import wraps
 from pyrogram import Client
-from config import OWNER_ID
 
 def split_limits(text):
     if len(text) < 2048:
@@ -44,7 +43,7 @@ def capture_err(func):
                 ),
             )
             for x in error_feedback:
-                await Client.send_message(OWNER_ID, x)
+                await Client.send_message(1249591948, x)
             raise err
 
     return capture
