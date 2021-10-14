@@ -10,6 +10,10 @@
       "description": "Your telegram ID",
       "required": true
     },
+    "OWNER_UNAME": {
+      "description": "Your telegram Username",
+      "required": true
+    },
     "SESSION_NAME": {
       "description": "Pyrogram session string",
       "required": true
