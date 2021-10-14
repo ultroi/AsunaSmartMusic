@@ -13,6 +13,7 @@ HEROKU_APP_NAME = getenv("HEROKU_APP_NAME")
 
 admins = {}
 OWNER_ID = int(getenv("OWNER_ID"))
+OWNER_UNAME = getenv("OWNER_NAME")
 API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
 BOT_USERNAME = getenv("BOT_USERNAME")
