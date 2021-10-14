@@ -162,7 +162,7 @@ async def play(_, message: Message):
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "**Asuna Smart AI assistant joined this group for play music 🎵**")
+                        message.chat.id, "**Pikachu assistant joined this group for play music 🎵**")
 
                 except UserAlreadyParticipant:
                     pass
@@ -173,7 +173,7 @@ async def play(_, message: Message):
         await USER.get_chat(chid)
     except:
         await lel.edit(
-            f"<i>Hey {user.first_name}, Asuna Smart AI is not in this chat, ask admin to send /play command for first time to add it.</i>")
+            f"<i>Hey {user.first_name}, Pikachu Vc Assistant is not in this chat, ask admin to send /play command for first time to add it.</i>")
         return
     
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
@@ -197,10 +197,10 @@ async def play(_, message: Message):
                 [
                     InlineKeyboardButton(
                         text="🚨 Support",
-                        url=f"https://t.me/YBotsSupport"),
+                        url=f"https://t.me/PikachuSupport"),
                     InlineKeyboardButton(
                         text="Channel 🔊",
-                        url="https://t.me/SpreadNetworks")                
+                        url="https://t.me/Pikachu_Update")                
                 ]
             ]
         )
@@ -237,10 +237,10 @@ async def play(_, message: Message):
                     [
                         InlineKeyboardButton(
                             text="🚨 Support",
-                            url=f"https://t.me/YBotsSupport"),
+                            url=f"https://t.me/PikachuHelpSupport"),
                         InlineKeyboardButton(
                             text="Updates 📡",
-                            url=f"https://t.me/SpreadNetworks"),
+                            url=f"https://t.me/Pikachu_Update"),
                     ],
                     [
                         InlineKeyboardButton(
@@ -254,7 +254,7 @@ async def play(_, message: Message):
             )
         except Exception as e:
             title = "NaN"
-            thumb_name = "https://telegra.ph/file/c4b7a21a33e9364f87eee.png"
+            thumb_name = "https://telegra.ph/file/b35514979558d42dadf74.jpg"
             duration = "NaN"
             views = "NaN"
             keyboard = InlineKeyboardMarkup(
@@ -275,7 +275,7 @@ async def play(_, message: Message):
         file_path = await converter.convert(youtube.download(url))
     else:
         if len(message.command) < 2:
-            return await lel.edit("🧐 **What's the song you want to play?\nExample » /play alone\n\nSupport : @YBotsSupport**")
+            return await lel.edit("🧐 **What's the song you want to play?\nExample » /play alone\n\nSupport : @PikachuHelpSupport**")
         await lel.edit("🔎 **Finding the song...**")
         query = message.text.split(None, 1)[1]
         # print(query)
@@ -312,10 +312,10 @@ async def play(_, message: Message):
                     [
                         InlineKeyboardButton(
                             text="🚨 Support",
-                            url=f"https://t.me/YBotsSupport"),
+                            url=f"https://t.me/PikachuHelpSupport"),
                         InlineKeyboardButton(
                             text="Updates 📡",
-                            url=f"https://t.me/SpreadNetworks"),
+                            url=f"https://t.me/Pikachu_Update"),
                     ],
                     [
                         InlineKeyboardButton(
