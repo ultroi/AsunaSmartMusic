@@ -1,11 +1,11 @@
 from pyrogram import Client
-from pytgcalls import PyTgCalls
+from pytgcalls import GroupCallFactory
 
 from config import API_HASH, API_ID, SESSION_NAME
 from . import queues
 
 client = Client(SESSION_NAME, API_ID, API_HASH)
-pytgcalls = PyTgCalls(client)
+pytgcalls = GroupCallFactory(client)
 
 
 @pytgcalls.on_stream_end()
