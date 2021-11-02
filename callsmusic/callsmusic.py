@@ -18,8 +18,8 @@ from typing import Dict
 
 from pytgcalls import PyTgCalls
 
-from GroupMusicPlayerBot.services.callsmusic import client
-from GrouusicPlayerBot.services.queues import queues
+from AsunaSmartMusic.services.callsmusic import client
+from AsunaSmartMusic.services.queues import queues
 
 instances: Dict[int, GroupCallFactory] = {}
 active_chats: Dict[int, Dict[str, bool]] = {}
