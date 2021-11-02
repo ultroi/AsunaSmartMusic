@@ -21,7 +21,7 @@ from pytgcalls import PyTgCalls
 from AsunaSmartMusic.services.callsmusic import client
 from AsunaSmartMusic.services.queues import queues
 
-instances: Dict[int, GroupCallFactory] = {}
+instances: Dict[int, PyTgCalls] = {}
 active_chats: Dict[int, Dict[str, bool]] = {}
 
 
