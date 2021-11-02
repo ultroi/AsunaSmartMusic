@@ -16,7 +16,7 @@
 
 from typing import Dict
 
-from pytgcalls import GroupCallFactory
+from pytgcalls import PyTgCalls
 
 from GroupMusicPlayerBot.services.callsmusic import client
 from GrouusicPlayerBot.services.queues import queues
@@ -27,7 +27,7 @@ active_chats: Dict[int, Dict[str, bool]] = {}
 
 def init_instance(chat_id: int):
     if chat_id not in instances:
-        instances[chat_id] = GroupCallFactory(
+        instances[chat_id] = PyTgCalls(
             client, outgoing_audio_bitrate_kbit=320
         ).get_file_group_call()
 
@@ -54,7 +54,7 @@ def remove(chat_id: int):
         del active_chats[chat_id]
 
 
-def get_instance(chat_id: int) -> GroupCallFactory:
+def get_instance(chat_id: int) -> Pytgcalls:
     init_instance(chat_id)
     return instances[chat_id]
 
